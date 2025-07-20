@@ -11,7 +11,10 @@ import sys
 # Removed unused 'subprocess' import
 
 def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+import subprocess  # Import subprocess module for running system commands securely
+
+def clear_screen():
+    subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
 
 def clear_screen():
 # Import subprocess for secure process execution
