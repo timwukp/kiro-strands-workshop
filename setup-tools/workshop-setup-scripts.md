@@ -21,6 +21,7 @@ import platform
 import urllib.request
 import zipfile
 import shutil
+import datetime  # Added missing datetime import
 from pathlib import Path
 import logging
 
@@ -154,39 +155,72 @@ echo ""
         logger.info(f"Created activation script: {script_path}")
     
     def download_kiro_ide(self):
-        """Download and install Kiro IDE."""
-        logger.info("Downloading Kiro IDE...")
+        """Prepare for Kiro IDE installation with security considerations."""
+        logger.info("Preparing for Kiro IDE installation...")
         
-        # Note: In real implementation, you would download from kiro.dev
-        # This is a placeholder for the actual download logic
-        
+        # Create a dedicated directory for Kiro IDE
         kiro_dir = self.workshop_dir / "kiro-ide"
         kiro_dir.mkdir(exist_ok=True)
         
-        # Create placeholder installation info
+        # Create installation instructions with security notes
+        install_instructions = """# Kiro IDE Installation Instructions
+
+## Official Download
+1. Download Kiro IDE from the official website: [kiro.dev](https://kiro.dev)
+2. Verify the download integrity using the provided checksums
+3. Install following the official documentation
+
+## Security Considerations
+- Always download from the official website only
+- Verify digital signatures or checksums before installation
+- Keep the application updated with security patches
+- Review permissions requested during installation
+
+## Post-Installation
+1. Configure Amazon Q Developer extension
+2. Set up MCP server connections
+3. Create project steering files
+
+For more information, visit the [official documentation](https://docs.kiro.dev).
+"""
+        
+        instructions_path = kiro_dir / "installation_instructions.md"
+        with open(instructions_path, "w") as f:
+            f.write(install_instructions)
+        
+        # Create placeholder installation info with current timestamp
         install_info = {
             "version": "latest",
             "download_url": "https://kiro.dev/download",
-            "installation_date": str(datetime.now()),
+            "installation_date": datetime.datetime.now().isoformat(),
             "status": "ready_for_manual_install"
         }
         
         with open(kiro_dir / "install_info.json", "w") as f:
             json.dump(install_info, f, indent=2)
         
-        logger.info("Kiro IDE download prepared. Manual installation required from kiro.dev")
+        logger.info("Kiro IDE installation instructions prepared")
+        logger.info(f"Instructions location: {instructions_path}")
+        logger.warning("SECURITY NOTE: Always download Kiro IDE from the official website only")
         return True
     
     def setup_aws_configuration(self):
-        """Set up AWS configuration templates."""
+        """Set up AWS configuration templates in a secure manner."""
         logger.info("Setting up AWS configuration templates...")
         
-        aws_dir = self.home_dir / ".aws"
+        # Create workshop AWS directory instead of using the user's .aws directory
+        aws_dir = self.workshop_dir / "aws_config_templates"
         aws_dir.mkdir(exist_ok=True)
         
-        # Create template credentials file
-        credentials_template = """[default]
-# Replace with your actual AWS credentials
+        # Create template credentials file with clear warnings
+        credentials_template = """# WARNING: THIS IS A TEMPLATE FILE ONLY
+# DO NOT STORE ACTUAL CREDENTIALS IN THIS FILE
+# 
+# SECURITY BEST PRACTICE: Use AWS CLI's 'aws configure' command instead
+# or use environment variables for credentials
+
+[default]
+# Replace with your actual AWS credentials using 'aws configure'
 aws_access_key_id = YOUR_ACCESS_KEY_HERE
 aws_secret_access_key = YOUR_SECRET_KEY_HERE
 
@@ -198,11 +232,19 @@ region = us-west-2
 """
         
         credentials_path = aws_dir / "credentials.template"
+        # Write with restricted permissions (0600 - user read/write only)
         with open(credentials_path, "w") as f:
             f.write(credentials_template)
         
-        # Create config file
-        config_content = """[default]
+        # Set secure permissions for credentials template
+        if self.system != "windows":  # Skip on Windows as it has different permission model
+            os.chmod(credentials_path, 0o600)
+        
+        # Create config file template
+        config_content = """# AWS CLI configuration template
+# Copy to ~/.aws/config or use 'aws configure'
+
+[default]
 region = us-west-2
 output = json
 
@@ -211,11 +253,43 @@ region = us-west-2
 output = json
 """
         
-        config_path = aws_dir / "config"
+        config_path = aws_dir / "config.template"
         with open(config_path, "w") as f:
             f.write(config_content)
         
-        logger.info("AWS configuration templates created")
+        # Create AWS setup instructions
+        instructions = """# Secure AWS Setup Instructions
+
+## Option 1: Using AWS CLI (Recommended)
+```bash
+# Configure your AWS credentials securely
+aws configure
+```
+
+## Option 2: Manual Configuration
+1. Create ~/.aws directory if it doesn't exist
+2. Create ~/.aws/credentials with your AWS credentials
+3. Create ~/.aws/config with your AWS configuration
+4. Set proper permissions:
+   ```bash
+   chmod 600 ~/.aws/credentials
+   ```
+
+## Security Best Practices
+- Never share your AWS credentials
+- Use IAM roles when possible instead of access keys
+- Create users with minimal permissions needed
+- Regularly rotate your access keys
+- Consider using AWS SSO for authentication
+"""
+        
+        instructions_path = aws_dir / "aws_setup_instructions.md"
+        with open(instructions_path, "w") as f:
+            f.write(instructions)
+        
+        logger.info("AWS configuration templates and instructions created")
+        logger.info(f"Templates location: {aws_dir}")
+        logger.warning("SECURITY NOTE: Follow the instructions in aws_setup_instructions.md for secure AWS configuration")
         return True
     
     def create_sample_projects(self):
@@ -386,10 +460,12 @@ This project is part of the Kiro IDE + Strands SDK workshop for building agentic
         """Generate setup completion report."""
         report_path = self.workshop_dir / "setup_report.md"
         
+        current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        
         report_content = f"""# Workshop Setup Report
 
 ## Setup Summary
-- **Setup Date**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+- **Setup Date**: {current_time}
 - **System**: {platform.system()} {platform.release()}
 - **Python Version**: {sys.version}
 - **Workshop Directory**: {self.workshop_dir}
@@ -402,9 +478,15 @@ This project is part of the Kiro IDE + Strands SDK workshop for building agentic
 - ✅ Configuration files
 - ⚠️  Kiro IDE (manual installation required)
 
+## Security Notes
+- ✅ AWS credentials templates stored securely
+- ✅ Secure file permissions applied
+- ✅ Security guidelines provided
+- ⚠️  Review security-guidelines.md for best practices
+
 ## Next Steps
-1. **Install Kiro IDE**: Download from [kiro.dev](https://kiro.dev)
-2. **Configure AWS**: Update credentials in `~/.aws/credentials`
+1. **Install Kiro IDE**: Follow instructions in kiro-ide/installation_instructions.md
+2. **Configure AWS**: Follow instructions in aws_config_templates/aws_setup_instructions.md
 3. **Set GitHub Token**: Update MCP server configuration
 4. **Activate Environment**: Run the activation script
 5. **Test Setup**: Run the verification script
@@ -433,6 +515,7 @@ If you encounter issues:
 - Sample projects: `templates/`
 - Configuration files: `.kiro/`
 - Error logs: `setup_errors.log`
+- Security guidelines: `security-guidelines.md`
 """
         
         with open(report_path, "w") as f:
@@ -479,7 +562,7 @@ If you encounter issues:
         return len(self.errors) == 0
 
 if __name__ == "__main__":
-    import datetime
+    # datetime is already imported at the top of the file
     
     setup = WorkshopSetup()
     success = setup.run_setup()
