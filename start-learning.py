@@ -106,7 +106,13 @@ elif sys.platform.startswith('linux'):  # Linux
     except Exception as e:
         else:
             print(f"Please manually open: {filepath}")
+print(f"Please manually open: {filepath}")
     except Exception as e:
+        print(f"Could not open file automatically. Please open: {filepath}")
+        print(f"Error details: {str(e)}")  # Log the exception details
+
+def handle_quickstart():
+    clear_screen()
         print(f"Could not open file automatically. Please open: {filepath}")
 
 def handle_quickstart():
