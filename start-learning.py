@@ -6,23 +6,29 @@ Interactive guide to help you choose and start the right course
 
 import os
 import sys
-import os
-import sys
-# Removed unused 'subprocess' import
-
-def clear_screen():
 import subprocess  # Import subprocess module for running system commands securely
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 def clear_screen():
-    subprocess.run(['cls' if os.name == 'nt' else 'clear'], shell=True)
-
-def clear_screen():
-# Import subprocess for secure process execution
-import subprocess
-
-def clear_screen():
-    cmd = ['cls'] if os.name == 'nt' else ['clear']
-    subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    """Clear the terminal screen in a secure manner.
+    Uses platform-specific commands without shell=True for security.
+    """
+    try:
+        if os.name == 'nt':  # Windows
+            subprocess.run(['cls'], check=False)
+        else:  # Unix/Linux/MacOS
+            subprocess.run(['clear'], check=False)
+    except Exception as e:
+        logger.error(f"Failed to clear screen: {str(e)}")
+        # Fallback to printing newlines if command fails
+        print("\n" * 100)
 
 def print_header():
     print("🚀 Kiro IDE + Strands SDK Learning Hub")
@@ -55,6 +61,11 @@ def show_course_options():
     print()
 
 def get_user_choice():
+    """Get user choice from input with validation.
+    
+    Returns:
+        int: User's choice (1-4)
+    """
     while True:
         try:
             choice = input("Enter your choice (1-4): ").strip()
@@ -67,58 +78,37 @@ def get_user_choice():
             sys.exit(0)
 
 def open_file(filepath):
-    """Open file with default system application"""
+    """Open file with default system application in a secure manner.
+    
+    Args:
+        filepath (str): Path to the file to open
+    """
+    # Validate filepath to prevent path traversal
     try:
+        # Convert to absolute path to ensure we're opening what we expect
+        abs_path = os.path.abspath(filepath)
+        logger.info(f"Opening file: {abs_path}")
+        
         if sys.platform.startswith('darwin'):  # macOS
-import shlex  # Used to properly split the command string into a list of arguments
-import subprocess  # Used to execute system commands in a more secure manner
-
-def open_file(filepath):
-    """Open file with default system application"""
-    try:
-        if sys.platform.startswith('darwin'):  # macOS
-            subprocess.run(shlex.split(f'open {filepath}'))
+            subprocess.run(['open', abs_path], check=False)
         elif sys.platform.startswith('linux'):  # Linux
-            subprocess.run(shlex.split(f'xdg-open {filepath}'))
+            subprocess.run(['xdg-open', abs_path], check=False)
         elif sys.platform.startswith('win'):  # Windows
-            os.startfile(filepath)
+            if os.path.exists(abs_path):
+                os.startfile(abs_path)
+            else:
+                logger.error(f"File not found: {abs_path}")
+                print(f"File not found: {abs_path}")
         else:
-        elif sys.platform.startswith('linux'):  # Linux
-import shlex  # Import shlex for safe command-line string splitting
-import subprocess  # Import subprocess for executing system commands
-
-def open_file(filepath):
-    """Open file with default system application"""
-    try:
-        if sys.platform.startswith('darwin'):  # macOS
-            subprocess.run(['open', filepath])
-        elif sys.platform.startswith('linux'):  # Linux
-            subprocess.run(shlex.split(f'xdg-open {filepath}'))
-        elif sys.platform.startswith('win'):  # Windows
-            os.startfile(filepath)
-        else:
-        elif sys.platform.startswith('win'):  # Windows
-elif sys.platform.startswith('linux'):  # Linux
-            subprocess.run(['xdg-open', filepath])
-        elif sys.platform.startswith('win'):  # Windows
-            # Import subprocess to use run() method for process execution
-            import subprocess
-            subprocess.run([filepath], check=True)
-        else:
-            print(f"Please manually open: {filepath}")
+            print(f"Please manually open: {abs_path}")
+            logger.info(f"Unknown platform, manual file opening required: {abs_path}")
     except Exception as e:
-        else:
-            print(f"Please manually open: {filepath}")
-print(f"Please manually open: {filepath}")
-    except Exception as e:
+        logger.error(f"Could not open file: {filepath}. Error: {str(e)}")
         print(f"Could not open file automatically. Please open: {filepath}")
         print(f"Error details: {str(e)}")  # Log the exception details
 
 def handle_quickstart():
-    clear_screen()
-        print(f"Could not open file automatically. Please open: {filepath}")
-
-def handle_quickstart():
+    """Handle the 2-Hour Quickstart course selection."""
     clear_screen()
     print_header()
     print("🚀 2-Hour Quickstart Course Selected!")
@@ -139,6 +129,7 @@ def handle_quickstart():
         print("No problem! Materials are in the '2hr-quickstart' folder when you're ready.")
 
 def handle_comprehensive():
+    """Handle the 5-Day Comprehensive Workshop selection."""
     clear_screen()
     print_header()
     print("📚 5-Day Comprehensive Workshop Selected!")
@@ -162,6 +153,7 @@ def handle_comprehensive():
             handle_quickstart()
 
 def handle_comparison():
+    """Handle the course comparison selection."""
     clear_screen()
     print_header()
     print("🤔 Course Comparison & Decision Guide")
@@ -173,6 +165,7 @@ def handle_comparison():
     input("Press Enter to return to main menu...")
 
 def handle_browse():
+    """Handle the browse all materials selection."""
     clear_screen()
     print_header()
     print("📁 Browse All Materials")
@@ -186,26 +179,33 @@ def handle_browse():
     input("Press Enter to return to main menu...")
 
 def main():
+    """Main function to run the interactive learning path navigator."""
     while True:
-        clear_screen()
-        print_header()
-        show_course_options()
-        
-        choice = get_user_choice()
-        
-        if choice == 1:
-            handle_quickstart()
-        elif choice == 2:
-            handle_comprehensive()
-        elif choice == 3:
-            handle_comparison()
-        elif choice == 4:
-            handle_browse()
-        
-        print()
-        continue_choice = input("Would you like to return to the main menu? (y/n): ").lower().strip()
-        if continue_choice != 'y':
-            break
+        try:
+            clear_screen()
+            print_header()
+            show_course_options()
+            
+            choice = get_user_choice()
+            
+            if choice == 1:
+                handle_quickstart()
+            elif choice == 2:
+                handle_comprehensive()
+            elif choice == 3:
+                handle_comparison()
+            elif choice == 4:
+                handle_browse()
+            
+            print()
+            continue_choice = input("Would you like to return to the main menu? (y/n): ").lower().strip()
+            if continue_choice != 'y':
+                break
+        except Exception as e:
+            logger.error(f"An error occurred in the main loop: {str(e)}")
+            print(f"An error occurred: {str(e)}")
+            print("Please try again or restart the program.")
+            input("Press Enter to continue...")
     
     print("\n🎉 Happy learning! Build amazing AI agents! 🤖")
     print("💬 Need help? Check the support info in each course README")
@@ -216,3 +216,8 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\n\nGoodbye! 👋")
         sys.exit(0)
+    except Exception as e:
+        logger.error(f"Unhandled exception: {str(e)}")
+        print(f"\nAn unexpected error occurred: {str(e)}")
+        print("Please report this issue to the support team.")
+        sys.exit(1)

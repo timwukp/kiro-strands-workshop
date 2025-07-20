@@ -112,6 +112,15 @@ open course-comparison.md
 - Advanced Python knowledge
 - Production deployment experience
 
+## 🔒 Security Guidelines
+
+We take security seriously in all our courses. Please review our security guidelines:
+
+- [Security Guidelines](security-guidelines.md) - Essential security best practices
+- [Workshop Security Recommendations](workshop-security-recommendations.md) - For instructors and participants
+
+Following these guidelines will help you build secure AI agent applications and avoid common security pitfalls.
+
 ## 🎓 Certification & Outcomes
 
 ### 2-Hour Quickstart:
