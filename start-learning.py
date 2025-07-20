@@ -62,7 +62,19 @@ def open_file(filepath):
     """Open file with default system application"""
     try:
         if sys.platform.startswith('darwin'):  # macOS
-            subprocess.run(['open', filepath])
+import shlex  # Used to properly split the command string into a list of arguments
+import subprocess  # Used to execute system commands in a more secure manner
+
+def open_file(filepath):
+    """Open file with default system application"""
+    try:
+        if sys.platform.startswith('darwin'):  # macOS
+            subprocess.run(shlex.split(f'open {filepath}'))
+        elif sys.platform.startswith('linux'):  # Linux
+            subprocess.run(shlex.split(f'xdg-open {filepath}'))
+        elif sys.platform.startswith('win'):  # Windows
+            os.startfile(filepath)
+        else:
         elif sys.platform.startswith('linux'):  # Linux
             subprocess.run(['xdg-open', filepath])
         elif sys.platform.startswith('win'):  # Windows
