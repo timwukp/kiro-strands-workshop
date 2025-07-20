@@ -1,101 +1,177 @@
-# Kiro IDE + Strands SDK Workshop - Complete Package
+# Kiro IDE + Strands SDK Learning Hub
 
-## 📁 Folder Structure
+**Choose Your Learning Path: 2-Hour Quickstart or 5-Day Mastery**
+
+## 🎯 Two Learning Paths Available
+
+### 🚀 2-Hour Quickstart Course
+**Perfect for**: Rapid prototyping and exploration
+- Build your first AI agent in 2 hours
+- Learn core concepts quickly
+- Get a working demo
+- Minimal time investment
+
+### 📚 5-Day Comprehensive Workshop  
+**Perfect for**: Production-ready expertise
+- Master advanced agent architectures
+- Deploy scalable systems
+- Earn professional certification
+- Career-changing skills
+
+## 📁 Organized Structure
 
 ```
-kiro-strands-workshop-complete/
-├── README.md                           # This file - overview and navigation
-├── workshop-implementation-guide.md    # Quick start guide and checklist
-├── self-study-outlines.md             # Detailed daily schedules for self-paced learning
-├── documentation/                      # Core workshop materials
-│   ├── kiro-strands-workshop-framework.md     # Main 5-day curriculum
-│   ├── kiro-strands-lab-exercises.md          # Hands-on coding exercises
-│   ├── kiro-strands-assessment-rubrics.md     # Evaluation criteria
-│   └── kiro-strands-instructor-guide.md       # Teaching guidelines
-├── setup-tools/                       # Automation and setup
-│   └── workshop-setup-scripts.md              # Environment setup scripts
-├── sample-data/                       # Sample datasets and APIs
-│   └── workshop-sample-data.md                # Mock data generators
-├── templates/                         # Code templates (to be populated)
-└── scripts/                          # Utility scripts (to be populated)
+kiro-strands-learning-hub/
+├── README.md                    # This navigation guide
+├── course-comparison.md         # Help choose your path
+├── 2hr-quickstart/             # Fast-track learning
+│   ├── README.md               # Quickstart guide
+│   ├── quickstart-2hr-course.md
+│   ├── quickstart-implementation-guide.md
+│   ├── quickstart-setup-guide.md
+│   ├── quickstart-templates.py
+│   ├── quickstart-assessment.md
+│   └── quickstart-course-summary.md
+└── 5day-comprehensive/         # Deep expertise
+    ├── README.md               # Comprehensive guide
+    ├── documentation/          # Core curriculum
+    ├── setup-tools/           # Environment automation
+    ├── sample-data/           # Practice datasets
+    ├── self-study-outlines.md
+    └── workshop-implementation-guide.md
 ```
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Choose Your Path)
 
-1. **Read First**: `workshop-implementation-guide.md`
-2. **For Self-Study**: `self-study-outlines.md`
-3. **For Instructors**: `documentation/kiro-strands-instructor-guide.md`
-4. **Setup Environment**: `setup-tools/workshop-setup-scripts.md`
-5. **Generate Data**: `sample-data/workshop-sample-data.md`
+### Option 1: 2-Hour Quickstart
+```bash
+cd 2hr-quickstart
+open README.md
+# Follow the quickstart guide
+```
 
-## 📚 Workshop Overview
+### Option 2: 5-Day Comprehensive
+```bash
+cd 5day-comprehensive  
+open README.md
+# Review prerequisites first
+```
 
-**Duration**: 5 days (40 hours total)
-**Target**: Software developers and agentic AI builders
-**Tools**: Kiro IDE + Strands SDK + Amazon Q Developer
+### Option 3: Need Help Choosing?
+```bash
+open course-comparison.md
+# Detailed comparison and decision guide
+```
 
-### Day-by-Day Structure
-- **Day 1**: Foundation setup and basic concepts
-- **Day 2**: Core agent development with essential tools
-- **Day 3**: Advanced capabilities (memory, multi-agent systems)
-- **Day 4**: AWS integration and production deployment
-- **Day 5**: Capstone projects and certification
+## 🎯 What You'll Learn
 
-## 🎯 Learning Outcomes
+### Both Courses Cover:
+- Kiro IDE setup and usage
+- Strands SDK fundamentals  
+- MCP server integration
+- AWS Bedrock deployment
+- Hands-on agent development
 
-Participants will learn to:
-- Set up and use Kiro IDE with Amazon Q Developer extension
-- Build sophisticated AI agents using Strands SDK
-- Implement memory systems and multi-agent coordination
-- Deploy production-ready agents on AWS
-- Follow best practices for agentic AI development
+### Quickstart Focus:
+- Rapid prototyping
+- Core concepts
+- Working demo
+- Foundation skills
 
-## 📋 Implementation Checklist
+### Comprehensive Focus:
+- Production deployment
+- Advanced architectures
+- Multi-agent systems
+- Enterprise integration
+- Professional certification
 
-### Pre-Workshop (1 week before)
-- [ ] Review all documentation materials
-- [ ] Set up development environment using setup scripts
-- [ ] Generate sample data and start mock API server
-- [ ] Test all code examples and exercises
-- [ ] Prepare AWS accounts and permissions
+## 📊 Course Comparison
 
-### During Workshop
-- [ ] Follow daily lesson plans in instructor guide
-- [ ] Use assessment rubrics for evaluation
-- [ ] Support participants with troubleshooting
-- [ ] Encourage hands-on experimentation
-
-### Post-Workshop
-- [ ] Provide certification based on assessment results
-- [ ] Share additional resources and community access
-- [ ] Schedule follow-up sessions as needed
+| Aspect | 2-Hour Quickstart | 5-Day Comprehensive |
+|--------|-------------------|---------------------|
+| **Time** | 2 hours | 40 hours (5 days) |
+| **Level** | Beginner | Intermediate+ |
+| **Goal** | Rapid prototype | Production ready |
+| **Outcome** | Working demo | Career skills |
+| **Certification** | Basic badge | Professional cert |
+| **Prerequisites** | Basic Python | 2hr course + experience |
+| **Investment** | Minimal | Significant |
+| **Support** | Self-guided | Full instructor |
 
 ## 🛠️ Technical Requirements
 
-### Software
-- Kiro IDE (from kiro.dev)
+### For Both Courses:
 - Python 3.8+
-- AWS CLI
-- Git
-
-### Services
+- Node.js 16+ (for Kiro IDE)
 - AWS account with Bedrock access
-- GitHub account for MCP integration
-- Internet connection for API exercises
+- Git and GitHub account
+- Stable internet connection
 
-## 📞 Support
+### Additional for 5-Day:
+- 40 hours dedicated time
+- Advanced Python knowledge
+- Production deployment experience
 
-For questions or issues:
-1. Check the troubleshooting sections in each document
-2. Review the instructor guide for common solutions
-3. Use the implementation guide for quick reference
+## 🎓 Certification & Outcomes
 
-## 📄 License and Usage
+### 2-Hour Quickstart:
+- ✅ Basic AI agent development
+- ✅ MCP integration understanding
+- ✅ AWS Bedrock basics
+- 🏆 Quickstart completion badge
 
-This workshop framework is designed for educational purposes. Modify and adapt as needed for your specific training requirements.
+### 5-Day Comprehensive:
+- ✅ Production-ready agent systems
+- ✅ Multi-agent coordination
+- ✅ Enterprise deployment patterns
+- ✅ Industry best practices
+- 🏆 Professional certification
+
+## 🚀 Getting Started
+
+### Interactive Navigation (Recommended)
+```bash
+# Run the interactive guide
+python start-learning.py
+```
+This script will help you choose the right path and open the correct materials.
+
+### Manual Navigation
+
+#### Option 1: 2-Hour Quickstart
+```bash
+cd 2hr-quickstart
+open README.md
+```
+
+#### Option 2: 5-Day Comprehensive
+```bash
+cd 5day-comprehensive
+open README.md
+```
+
+#### Option 3: Compare Courses
+```bash
+open course-comparison.md
+```
+
+### What Happens Next
+1. **Choose your path** using the guide above
+2. **Follow your course README** for detailed instructions
+3. **Complete setup** using provided guides
+4. **Start learning** with step-by-step materials
+5. **Get certified** by completing assessments
+
+## 📞 Support & Community
+
+- **Course Selection**: guidance@kiro-strands.dev
+- **Technical Help**: support@kiro-strands.dev  
+- **Discord Community**: #kiro-strands-learners
+- **Office Hours**: Tuesdays 2-4 PM PST
 
 ---
 
-**Total Package**: 8 comprehensive documents, ~160KB of workshop materials
-**Created**: July 2024
-**Version**: 1.0
+**Learning Hub**: 2 complete learning paths
+**Total Materials**: 12+ comprehensive documents
+**Created**: January 2024
+**Updated**: January 2024
