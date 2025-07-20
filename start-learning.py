@@ -90,7 +90,15 @@ def open_file(filepath):
             os.startfile(filepath)
         else:
         elif sys.platform.startswith('win'):  # Windows
-            os.startfile(filepath)
+elif sys.platform.startswith('linux'):  # Linux
+            subprocess.run(['xdg-open', filepath])
+        elif sys.platform.startswith('win'):  # Windows
+            # Import subprocess to use run() method for process execution
+            import subprocess
+            subprocess.run([filepath], check=True)
+        else:
+            print(f"Please manually open: {filepath}")
+    except Exception as e:
         else:
             print(f"Please manually open: {filepath}")
     except Exception as e:
