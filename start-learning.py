@@ -6,7 +6,12 @@ Interactive guide to help you choose and start the right course
 
 import os
 import sys
-import subprocess
+import os
+import sys
+# Removed unused 'subprocess' import
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def clear_screen():
 # Import subprocess for secure process execution
