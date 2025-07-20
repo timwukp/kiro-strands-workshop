@@ -9,7 +9,12 @@ import sys
 import subprocess
 
 def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# Import subprocess for secure process execution
+import subprocess
+
+def clear_screen():
+    cmd = ['cls'] if os.name == 'nt' else ['clear']
+    subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 def print_header():
     print("🚀 Kiro IDE + Strands SDK Learning Hub")
