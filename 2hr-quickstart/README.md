@@ -8,19 +8,14 @@
 - AWS Bedrock deployment
 - Complete end-to-end application
 
-## 🎯 Quick Start (Choose Your Path)
+## 🎯 Self-Paced Learning Path
 
-### Option 1: Self-Study
-1. **Setup**: Follow `quickstart-setup-guide.md`
-2. **Learn**: Work through `quickstart-implementation-guide.md`
-3. **Code**: Use templates in `quickstart-templates.py`
-4. **Test**: Complete `quickstart-assessment.md`
-
-### Option 2: Instructor-Led
-1. **Prep**: Complete setup guide before class
-2. **Attend**: 2-hour hands-on workshop
-3. **Build**: Follow along with live coding
-4. **Certify**: Pass assessment for badge
+### Complete in 2 Hours:
+1. **Setup** (30 min): Follow `quickstart-setup-guide.md`
+2. **Learn** (120 min): Work through `quickstart-implementation-guide.md`
+3. **Code**: Use templates in `quickstart-templates.py` for practice
+4. **Validate**: Complete `quickstart-assessment.md` for self-evaluation
+5. **Extend**: Build on the foundation with your own modifications
 
 ## 📚 Course Materials
 
@@ -48,12 +43,12 @@
 - AWS account with Bedrock access
 - 2 hours of focused time
 
-## 🎓 Certification
-Pass the assessment (70%+) to earn:
-- Digital badge
-- Certificate of completion
-- Access to advanced courses
-- Community membership
+## 🎓 Learning Validation
+Complete the self-assessment to:
+- Verify your understanding of core concepts
+- Identify areas for further study
+- Build confidence in your new skills
+- Prepare for the 5-day comprehensive course
 
 ## 🚀 Start Now
 ```bash

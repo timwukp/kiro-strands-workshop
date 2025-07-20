@@ -51,28 +51,13 @@
 | `self-study-outlines.md` | Daily schedules | Self-paced learning |
 | `workshop-implementation-guide.md` | Quick reference | Implementation checklist |
 
-## 🎓 Learning Paths
+## 🎓 Self-Paced Learning Path
 
-### Option 1: Instructor-Led Workshop
-- **Format**: 5 consecutive days, 8 hours each
-- **Group Size**: 8-12 participants
-- **Support**: Live instructor + TAs
-- **Materials**: All provided
-- **Certification**: Comprehensive assessment
-
-### Option 2: Self-Paced Study
-- **Duration**: 2-4 weeks at your pace
-- **Schedule**: Follow daily outlines
-- **Support**: Community + office hours
-- **Materials**: Self-guided
-- **Certification**: Online assessment
-
-### Option 3: Corporate Training
-- **Format**: Customized to your needs
-- **Duration**: 3-10 days flexible
-- **Content**: Tailored to use cases
-- **Support**: Dedicated instructor
-- **Certification**: Custom assessment
+**Duration**: 2-4 weeks at your own pace
+**Schedule**: Follow daily outlines and progress tracking
+**Format**: Complete self-guided study with community support
+**Flexibility**: Study when convenient, pause and resume anytime
+**Progress Tracking**: Built-in checkpoints and milestone assessments
 
 ## 🛠️ Prerequisites
 - Completed 2-hour quickstart OR
@@ -83,19 +68,14 @@
 
 ## 📋 Getting Started
 
-### For Self-Study:
-1. **Plan**: Review `self-study-outlines.md`
-2. **Setup**: Run scripts in `setup-tools/`
-3. **Learn**: Follow `documentation/kiro-strands-workshop-framework.md`
-4. **Practice**: Complete `documentation/kiro-strands-lab-exercises.md`
-5. **Assess**: Use `documentation/kiro-strands-assessment-rubrics.md`
-
-### For Instructor-Led:
-1. **Register**: Contact training team
-2. **Prepare**: Complete prerequisite checklist
-3. **Setup**: Follow pre-workshop instructions
-4. **Attend**: 5-day intensive workshop
-5. **Certify**: Pass comprehensive assessment
+### Self-Study Steps:
+1. **Plan Your Schedule**: Review `self-study-outlines.md` for daily breakdown
+2. **Environment Setup**: Run automated scripts in `setup-tools/`
+3. **Core Learning**: Follow `documentation/kiro-strands-workshop-framework.md`
+4. **Hands-On Practice**: Complete `documentation/kiro-strands-lab-exercises.md`
+5. **Self-Assessment**: Track progress with `documentation/kiro-strands-assessment-rubrics.md`
+6. **Build Projects**: Apply knowledge with real-world scenarios
+7. **Community Engagement**: Share progress and get feedback
 
 ## 🎯 Learning Outcomes
 
@@ -106,36 +86,29 @@ By completion, you will:
 - ✅ Follow industry best practices
 - ✅ Lead AI agent development teams
 
-## 🏆 Certification Levels
+## 🏆 Learning Validation
 
-### Professional Certificate
-- **Requirements**: 80%+ on all assessments
-- **Includes**: Digital badge + LinkedIn credential
-- **Valid**: 2 years with continuing education
+### Self-Assessment Framework
+- **Daily Checkpoints**: Verify understanding after each day
+- **Hands-On Projects**: Build real applications to demonstrate skills
+- **Code Reviews**: Self-evaluate using provided rubrics
+- **Portfolio Development**: Create showcase of completed projects
+- **Community Validation**: Share work for peer feedback and recognition
 
-### Expert Certificate
-- **Requirements**: 90%+ + capstone project
-- **Includes**: All above + instructor endorsement
-- **Benefits**: Teaching opportunities + consulting referrals
+## 📞 Self-Study Support
 
-### Master Certificate
-- **Requirements**: Expert + community contribution
-- **Includes**: All above + conference speaking opportunities
-- **Benefits**: Industry recognition + partnership opportunities
+### Learning Resources:
+- **Documentation**: Comprehensive guides and references
+- **Community Forum**: Peer discussions and Q&A
+- **Code Examples**: Extensive sample implementations
+- **Troubleshooting Guides**: Common issues and solutions
+- **Progress Tracking**: Built-in milestone checkpoints
 
-## 📞 Support & Community
-
-### During Course:
-- **Live Chat**: Real-time help
-- **Office Hours**: Weekly Q&A sessions
-- **Peer Groups**: Study partnerships
-- **Mentorship**: 1:1 guidance available
-
-### After Course:
-- **Alumni Network**: Ongoing community
-- **Advanced Workshops**: Continuing education
-- **Job Board**: Career opportunities
-- **Consulting Network**: Freelance opportunities
+### Ongoing Support:
+- **GitHub Discussions**: Technical questions and solutions
+- **Discord Community**: Real-time peer interaction
+- **Resource Library**: Continuously updated materials
+- **Project Showcase**: Share and discover community projects
 
 ## 🚀 Start Your Journey
 
